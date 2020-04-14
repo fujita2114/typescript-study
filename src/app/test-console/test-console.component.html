@@ -1,0 +1,13 @@
+<div #contentTop class="top" [ngStyle]="divStyle" style="overflow-y: auto" (click)="onRequestFocus($event)">
+  <div class="console-content">
+    <p *ngFor="let item of outputList">{{item}}</p>
+    <div class="last">
+      <p>{{prefixText}}</p>
+      <textarea #inputArea rows="1" (select)="onSelChange($event)" (focus)="onSelChange($event)" (focusout)="focusFlag=false" (keydown)="onSelChange($event)"
+        class="input"></textarea>
+      <p #inputTop>{{inputLeft}}</p>
+      <p [class.focus]="focusFlag">{{inputSelection}}</p>
+      <p>{{inputRight}}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+:host(.dark) div.top {
+    background-color: black;
+    color: white;
+}
+
+div.console-content {
+    padding: 0px;
+    font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+    font-size: 14px;
+    line-height: 1.2;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+div.console-content p {
+    margin: 0px;
+    white-space: pre;
+    min-height: 1em;
+}
+div.last {
+    min-height: 1em;
+}
+div.last>p {
+    display: inline;
+}
+:host(.dark) p.focus {
+    background-color: white;
+    color: black;
+    border-left: 1px solid white;
+    animation: darkblink 1s step-start infinite;
+	-webkit-animation: darkblink 1s step-start infinite;
+	-moz-animation: darkblink 1s step-start infinite;
+}
+p.focus {
+    background-color: black;
+    color: white;
+    white-space: nowrap;
+    border-left: 1px solid black;
+    margin-left: -1px !important;
+    animation: cursorblink 1s step-start infinite;
+	-webkit-animation: cursorblink 1s step-start infinite;
+	-moz-animation: cursorblink 1s step-start infinite;
+}
+textarea.input {
+    opacity: 0;
+    border: 0px;
+    position: absolute;
+    overflow: hidden;
+    padding: 0px;
+    z-index: 1;
+}
+
+@keyframes cursorblink {
+	0% {border-color: transparent;}
+    50% {border-color: white;}
+}
+@-webkit-keyframes cursorblink {
+	0% {border-color: transparent;}
+    50% {border-color: white;}
+}
+@-moz-keyframes cursorblink {
+	0% {border-color: transparent;}
+    50% {border-color: white;}
+}
+@keyframes darkblink {
+	0% {border-color: transparent;}
+    50% {border-color: black;}
+}
+@-webkit-keyframes darkblink {
+	0% {border-color: transparent;}
+    50% {border-color: black;}
+}
+@-moz-keyframes darkblink {
+	0% {border-color: transparent;}
+    50% {border-color: black;}
+}

@@ -1,0 +1,8 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <select [disabled]="executeFlag" [(ngModel)]="selectName">
+    <option [value]="item.name" *ngFor="let item of questionList">{{item.name}}:{{item.title}}</option>
+  </select>
+  <button [disabled]="executeFlag" (click)="onExecute()">実行</button>
+</div>
+<app-test-console #console class="dark" style="height: 400px; width: 100%"></app-test-console>
