@@ -44,11 +44,35 @@ export class Q002 implements IQuestion {
         "2,井上",
         "4,木村",
         "14,林",
-        "9,清水"
+        "9,清水",
     ];
 
+    private testConsole: TestConsole;
+
+    /**
+     * コンストラクタ
+     * 実行時に自動生成される際、testConsoleが渡されてくる
+     * @param testConsole コンソール操作用のオブジェクト
+     */
+    constructor(testConsole: TestConsole) {
+        this.testConsole = testConsole;
+    }
+
     async main() {
-        // TestConsoleを使って出力してください
+         for (var item of this.dataList.sort(this.compare)) {
+              this.testConsole.println(item);
+         }
+    }
+
+    /**
+     * 先頭からカンマまでの数値を比較
+     */
+    compare(a, b){
+        let comparison = 0;
+        let aNum: number = a.substr(0, a.indexOf(','));
+        let bNum: number = b.substr(0, b.indexOf(','))
+
+        return   aNum - bNum;
     }
 }
-// 完成までの時間: xx時間 xx分
+// 完成までの時間: 2時間

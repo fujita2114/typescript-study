@@ -51,8 +51,8 @@ class ListManager {
 
     /**
      * 2つのデータを入れ替える
-     * @param index1 
-     * @param index2 
+     * @param index1
+     * @param index2
      */
     public exchange(index1: number, index2: number): void {
         return this.exchangeFunc(index1, index2);
@@ -60,7 +60,7 @@ class ListManager {
 
     /**
      * ソートが正しく行われたかをチェックする
-     * @param testConsole 
+     * @param testConsole
      */
     public checkResult(testConsole: TestConsole): void {
         return this.checkFunc(testConsole);
@@ -90,9 +90,26 @@ class ListManager {
  */
 @Question("ソートアルゴリズムの作成")
 export class Q004 implements IQuestion {
+    private testConsole: TestConsole;
+
+    /**
+     * コンストラクタ
+     * 実行時に自動生成される際、testConsoleが渡されてくる
+     * @param testConsole コンソール操作用のオブジェクト
+     */
+    constructor(testConsole: TestConsole) {
+        this.testConsole = testConsole;
+    }
+
     async main() {
         let data = new ListManager();
-        // TestConsoleを使って出力してください
+        for (let i = 0 ; i < data.size(); i++) {
+            if (data.compare(i, 0) < 0){
+                data.exchange(i, 0);
+            }
+        }
+
+        data.checkResult(this.testConsole);
     }
 }
-// 完成までの時間: xx時間 xx分
+// 完成までの時間: 3時間

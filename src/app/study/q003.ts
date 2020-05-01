@@ -25,14 +25,42 @@ ignorance=1
  */
 @Question("単語のカウントを表示する")
 export class Q003 implements IQuestion {
+    private testConsole: TestConsole;
+
     /**
      * 以下の記述で assets/q003.txt の内容が入る
      */
     @TestFile("q003.txt")
     private fileData: FileData;
 
+    /**
+     * コンストラクタ
+     * 実行時に自動生成される際、testConsoleが渡されてくる
+     * @param testConsole コンソール操作用のオブジェクト
+     */
+    constructor(testConsole: TestConsole) {
+        this.testConsole = testConsole;
+    }
+
     async main() {
-        // TestConsoleを使って出力してください
+        console.log(this.fileData);
+        console.log(this.fileData.content.toLowerCase());
+
+        // 連想配列
+        let strCountList: { [key: string]: number; } = {};
+        let arrayStrig = this.fileData.content.toLowerCase().split(" ");
+
+        for (let item of arrayStrig) {
+            if(strCountList[item]) {
+                strCountList[item] = strCountList[item] + 1;
+            } else {
+                strCountList[item] = 1;
+            }
+        }
+
+        for (let str in strCountList) {
+            this.testConsole.println(str + "=" + strCountList[str]);
+        }
     }
 }
-// 完成までの時間: xx時間 xx分
+// 完成までの時間: 15分
