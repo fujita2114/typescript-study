@@ -43,9 +43,6 @@ export class Q003 implements IQuestion {
     }
 
     async main() {
-        console.log(this.fileData);
-        console.log(this.fileData.content.toLowerCase());
-
         // 連想配列
         let strCountList: { [key: string]: number; } = {};
         let arrayStrig = this.fileData.content.toLowerCase().split(" ");
