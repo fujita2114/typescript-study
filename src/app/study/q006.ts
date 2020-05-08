@@ -149,4 +149,4 @@ export class Q006 implements IQuestion {
         }
     }
 }
-// 完成までの時間: xx時間 xx分
+// 完成までの時間: 5時間
