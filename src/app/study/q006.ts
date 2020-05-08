@@ -51,7 +51,7 @@ class MinusValue implements IValue {
         // スタックに値を積む
         let right = stack.pop();
         let left = stack.pop();
-        stack.push(left + right);
+        stack.push(left - right);
     }
 }
 
@@ -63,7 +63,7 @@ class MultiplicationValue implements IValue {
         // スタックに値を積む
         let right = stack.pop();
         let left = stack.pop();
-        stack.push(left + right);
+        stack.push(left * right);
     }
 }
 
@@ -75,7 +75,7 @@ class DivisionValue implements IValue {
         // スタックに値を積む
         let right = stack.pop();
         let left = stack.pop();
-        stack.push(left + right);
+        stack.push(left / right);
     }
 }
 
@@ -114,7 +114,6 @@ export class Q006 implements IQuestion {
     private parseLine(lineText: string): IValue[] {
         let resultList: IValue[] = [];
         for (let text of lineText.split(/[\s]+/g)) {
-            // TODO 一部処理だけ実装
             switch (text) {
                 case '+':   // 足し算
                     resultList.push(new PlusValue());
@@ -144,7 +143,9 @@ export class Q006 implements IQuestion {
                 break;
             }
             let values = this.parseLine(line);
-            // TODO 計算して結果を表示する
+            const stack: number[] = [];
+            values.forEach(value => value.execute(stack));
+            this.testConsole.println(`stack[0]`);
         }
     }
 }

@@ -25,9 +25,23 @@ XXXXXXXXX
  */
 @Question("迷路の最短距離検索")
 export class Q007 implements IQuestion {
+    private testConsole: TestConsole;
+
+    /**
+     * コンストラクタ
+     * 実行時に自動生成される際、testConsoleが渡されてくる
+     * @param testConsole コンソール操作用のオブジェクト
+     */
+    constructor(testConsole: TestConsole) {
+        this.testConsole = testConsole;
+    }
     async main() {
         // TestConsoleを使って出力してください
         let maze = this.makeMaze();
+        console.log(maze);
+        for (let str of maze) {
+            this.testConsole.println(str);
+        }
         // TODO 迷路の最短距離を探す
     }
 

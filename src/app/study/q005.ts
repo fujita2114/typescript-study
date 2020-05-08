@@ -20,6 +20,22 @@ class WorkData {
     /** 作業時間(分) */
     private workTime: number;
 
+    public get getNumber(): string {
+        return this.number;
+    }
+
+    public get getPosition(): string {
+        return this.position;
+    }
+
+    public get getPCode(): string{
+        return this.pCode;
+    }
+
+    public get getWorkTime(): number {
+        return this.workTime;
+    }
+
     constructor(number: string, department: string, position: string, pCode: string, workTime: number) {
         this.number = number;
         this.department = department;
@@ -79,25 +95,25 @@ export class Q005 implements IQuestion {
         const dataList: WorkData[] = [];
         for(let i = 1; i < tmpList.length; i++) {
             let tmpLine = tmpList[i].split(',')
-            dataList.push(new WorkData(tmpLine[0], tmpLine[1], tmpLine[2], tmpLine[3], tmpLine[4]));
+            dataList.push(new WorkData(tmpLine[0], tmpLine[1], tmpLine[2], tmpLine[3], parseInt(tmpLine[4])));
         }
 
         const byPosition: Map<string, number> = new Map();
         const byPCode: Map<string, number> = new Map();
         const byEmployeeNumbre: Map<string, number> = new Map();
         dataList.forEach(workData => {
-            const workTime = parseInt(workData.workTime);
+            const workTime = workData.getWorkTime;
 
             // 役職別の合計作業時間
-            const position = workData.position;
+            const position = workData.getPosition;
             byPosition.set(position, byPosition.has(position) ? byPosition.get(position) + workTime : workTime);
 
             // Pコード別の合計作業時間
-            const pCode = workData.pCode;
+            const pCode = workData.getPCode;
             byPCode.set(pCode, byPCode.has(pCode) ? byPCode.get(pCode) + workTime : workTime);
 
             // 社員番号別の合計作業時間
-            const employeeNumber = workData.number;
+            const employeeNumber = workData.getNumber;
             byEmployeeNumbre.set(employeeNumber, byEmployeeNumbre.has(employeeNumber) ? byEmployeeNumbre.get(employeeNumber) + workTime : workTime);
 
         });
